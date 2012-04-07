@@ -16,27 +16,29 @@
 #    along with AFL Radio.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-import os
 import sys
+import config, utils
+import xbmc, xbmcgui, xbmcplugin
 
-# Add our resources/lib to the python path
-try:
-   current_dir = os.path.dirname(os.path.abspath(__file__))
-except:
-   current_dir = os.getcwd()
+__handle__ = int(sys.argv[1])
 
-sys.path.append( os.path.join( current_dir, "resources", "lib" ) )
+def list_stations():
+	for station in config.STATIONS:
 
-import utils, config, stations, play
+		thumb = config.THUMB_PATH % station['id']
+		listitem = xbmcgui.ListItem(station['name'])
+		labels = {
+			"title": station['name'],
+			"genre": "Sport"
+		}
+		listitem.setInfo(type='music', infoLabels=labels)
+		listitem.setThumbnailImage(thumb)
 
-utils.log('Initialised')
+		params = utils.make_url({
+			"id": station['id'], 
+			"name": station['name']
+		})
+		url = "%s?%s" % (sys.argv[0], params)
+		xbmcplugin.addDirectoryItem(handle=__handle__, url=url, listitem=listitem)
 
-if __name__ == "__main__" :
-	params = sys.argv[2]
-	p = utils.get_url(params)
-
-	if p.has_key("id"):
-		play.play(params)
-	else:
-		stations.list_stations()
-
+	xbmcplugin.endOfDirectory(handle=__handle__, succeeded=True)
