@@ -16,7 +16,7 @@ Download the latest ZIP file from the downloads section, and put it into your 'a
 
 For Windows:
 ```
-	%APPDATA%\XBMC\addons
+	%APPDATA%\XBMC\addons (e.g. C:\Program Files\XBMC\addons)
 ```
 
 For Linux:
@@ -26,7 +26,7 @@ For Linux:
 
 For Mac:
 ```
-	~/Library/Application Support/XBMC/addons
+	/Users/YOURUSERNAME/Library/Application Support/XBMC/addons
 ```
 
 For AppleTV:
