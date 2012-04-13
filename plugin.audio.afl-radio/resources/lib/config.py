@@ -32,7 +32,7 @@ STATIONS = [
 	{ 'name':'5AA Adelaide',                      'id':'3' },
 	{ 'name':'6PR Perth',                         'id':'4' },
 	{ 'name':'3AW Melbourne',                     'id':'5' },
-	{ 'name':'National Indigenous Radio Service', 'id':'6' },
+#	{ 'name':'National Indigenous Radio Service', 'id':'6' },
 	{ 'name':'Gold FM Gold Coast',                'id':'7' },
 	{ 'name':'Triple M Sydney',                   'id':'11' },
 	{ 'name':'Triple M Melbourne',                'id':'12' },
