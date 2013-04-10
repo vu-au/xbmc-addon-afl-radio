@@ -19,24 +19,27 @@
 import os
 
 NAME = 'AFL Radio'
-VERSION = '0.2'
+VERSION = '0.4'
 
-HOST = "lon-cdn220-is-1.se.bptvlive.ngcdn.telstra.com"
-URL = "http://" + HOST + "/online-radio-afl_%s"
-THUMB_PATH = os.path.join(os.getcwd(), "resources", "img", "radio_%s.jpg")
+# This URL returns a token if POST'ed to. The token is required in the header to any
+# reqeusts against the API
+TOKEN_URL = 'http://api.afl.com.au/cfs/afl/WMCTok'
+
+LIVE_AUDIO_URL = 'http://api.afl.com.au/cfs/afl/liveAudioStreams'
 
 # Stations list
 STATIONS = [
-	{ 'name':'SEN Melbourne',                     'id':'1' },
-	{ 'name':'ABC774',                            'id':'2' },
-	{ 'name':'5AA Adelaide',                      'id':'3' },
-	{ 'name':'6PR Perth',                         'id':'4' },
-	{ 'name':'3AW Melbourne',                     'id':'5' },
-#	{ 'name':'National Indigenous Radio Service', 'id':'6' },
-	{ 'name':'Gold FM Gold Coast',                'id':'7' },
-	{ 'name':'Triple M Sydney',                   'id':'11' },
-	{ 'name':'Triple M Melbourne',                'id':'12' },
-	{ 'name':'Triple M Brisbane',                 'id':'13' },
-	{ 'name':'Triple M Adelaide',                 'id':'14' },
-	{ 'name':'K-Rock Geelong',                    'id':'15' },
+	{ 'name':'SEN Melbourne',                     'id':'AFL_RADIO1' },
+	{ 'name':'ABC774',                            'id':'AFL_RADIO2' },
+	{ 'name':'5AA Adelaide',                      'id':'AFL_RADIO3' },
+	{ 'name':'6PR Perth',                         'id':'AFL_RADIO4' },
+	{ 'name':'3AW Melbourne',                     'id':'AFL_RADIO5' },
+	{ 'name':'National Indigenous Radio Service', 'id':'AFL_RADIO6' },
+	{ 'name':'Gold FM Gold Coast',                'id':'AFL_RADIO7' },
+	{ 'name':'AFL Live',                          'id':'AFL_RADIO8' },
+	{ 'name':'Triple M Sydney',                   'id':'AFL_RADIO11' },
+	{ 'name':'Triple M Melbourne',                'id':'AFL_RADIO12' },
+	{ 'name':'Triple M Brisbane',                 'id':'AFL_RADIO13' },
+	{ 'name':'Triple M Adelaide',                 'id':'AFL_RADIO14' },
+	{ 'name':'K-Rock Geelong',                    'id':'AFL_RADIO15' },
 ]

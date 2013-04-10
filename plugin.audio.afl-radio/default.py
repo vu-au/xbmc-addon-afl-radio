@@ -35,7 +35,7 @@ if __name__ == "__main__" :
 	params = sys.argv[2]
 	p = utils.get_url(params)
 
-	if p.has_key("id"):
+	if p.has_key('id'):
 		play.play(params)
 	else:
 		stations.list_stations()

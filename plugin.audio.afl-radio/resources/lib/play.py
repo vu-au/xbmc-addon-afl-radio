@@ -16,10 +16,13 @@
 #    along with AFL Radio.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+import os
 import config, utils
-import xbmc, xbmcgui, xbmcplugin
+import xbmc, xbmcgui, xbmcplugin, xbmcaddon
 
 def play(params):
+	__addon__ = xbmcaddon.Addon()
+
 	p = utils.get_url(params)
 
 	# Show a dialog
@@ -27,18 +30,18 @@ def play(params):
 	d.create(config.NAME, "Starting %s..." % p['name'])
 
 	try:
-		thumb = config.THUMB_PATH % p['id']
+		thumb = os.path.join(__addon__.getAddonInfo('path'), "resources", "img", "%s.jpg" % p['id'])
 		labels = {
-			"label": p['name'],
 			"title": p['name'],
-			"artist": config.NAME,
+			"artist": "AFL Radio",
 			"genre": "Sport"
 		}
 		listitem = xbmcgui.ListItem(p['name'])
 		listitem.setInfo(type='music', infoLabels=labels)
 		listitem.setThumbnailImage(thumb)
-		url = "http://%s/online-radio-afl_%s" % (config.HOST, p['id'])
-		xbmc.Player(xbmc.PLAYER_CORE_AUTO).play(url, listitem)
+
+		# PAPlayer or AUTO fails here for some absurd reason
+		xbmc.Player(xbmc.PLAYER_CORE_DVDPLAYER).play(p['url'], listitem)
 	except:
 		# user cancelled dialog or an error occurred
 		d = xbmcgui.Dialog()
